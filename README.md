@@ -37,23 +37,15 @@ The terminals windows on the build apliance are accessed via the down arrow symb
 
 If this is the first time that the Build Appliance has been used, one needs to clone this repository. The instructions below are for anonymous HTTP cloning.
 
-`bash
-cd
-
-mkdir -p git
-
-cd git
-
-git clone http://github.com/DevOps4Networks/iox-yocto-build.git
-`
+`cd`
+`mkdir -p git`
+`cd git`
+`git clone http://github.com/DevOps4Networks/iox-yocto-build.git`
 
 Then one needs to set up the build environment with these commands:
 
-`bash
-cd poky
-
-. ./oe-init-build-env ~/git/iox-yocto-build/
-`
+`cd poky`
+`. ./oe-init-build-env ~/git/iox-yocto-build/`
 
 One should expect to see the following, and have had the working directory changed to ~/git/iox-yocto-build/:
 
