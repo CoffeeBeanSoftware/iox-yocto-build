@@ -17,9 +17,9 @@ This tutorial was developed and tested on OSX, using the software describd below
 The basic steps to build a Yocto image and test it are:
 
  - Build an image on the build appliance.
- - Copy the image, using 'scp' to the OSX host.
- - Run the image using 'qemu'.
- - Use 'ssh' to connect to the image and test.
+ - Copy the image, using `scp` to the OSX host.
+ - Run the image using `qemu`.
+ - Use `ssh` to connect to the image and test.
  
 The various parts of this are largely automated with scripts in this repository, which should be cloned to the build machine, and to the host.
 
@@ -33,27 +33,27 @@ To execute a build, one should, either, use the terminal windows already availab
 
 The terminals windows on the build apliance are accessed via the down arrow symbol in the top left of the VM UI. One, anyway has to use those terminal windows at least once with the 'ifconfig' command to see the IP address of the VM on 'eth0'. Given that IP address, one can use a OSX terminal to connect to the Build Appliance like this:
 
-'sshpass -p "builder" ssh -o StrictHostKeyChecking=no builder@10.41.136.102'
+`sshpass -p "builder" ssh -o StrictHostKeyChecking=no builder@10.41.136.102`
 
 If this is the first time that the Build Appliance has been used, one needs to clone this repository. The instructions below are for anonymous HTTP cloning.
 
-'bash
+`bash
 cd
 mkdir -p git
 cd git
 git clone http://github.com/DevOps4Networks/iox-yocto-build.git
-'
+`
 
 Then one needs to set up the build environment with these commands:
 
-'bash
+`bash
 cd poky
 . ./oe-init-build-env ~/git/iox-yocto-build/
-'
+`
 
 One should expect to see the following, and have had the working directory changed to ~/git/iox-yocto-build/:
 
-'bash
+`bash
 ### Shell environment set up for builds. ###
 
 You can now run 'bitbake <target>'
@@ -66,15 +66,15 @@ Common targets are:
     meta-ide-support
 
 You can also run generated qemu images with a command like 'runqemu qemux86'
-'
+`
 
 Then one can:
 
-'bitbake core-image-kernel-dev'
+`bitbake core-image-kernel-dev`
 
 And expect to see something like:
 
-'bash
+`bash
 Loaded 1330 entries from dependency cache.
 NOTE: Resolving any missing task queue dependencies
 
