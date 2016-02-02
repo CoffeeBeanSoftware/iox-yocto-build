@@ -47,7 +47,7 @@ git clone http://github.com/DevOps4Networks/iox-yocto-build.git
 Then one needs to set up the build environment with these commands:
 
 ```bash
-cd poky
+cd ~/poky
 . ./oe-init-build-env ~/git/iox-yocto-build/
 ```
 
