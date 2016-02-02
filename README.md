@@ -37,19 +37,23 @@ The terminals windows on the build apliance are accessed via the down arrow symb
 
 If this is the first time that the Build Appliance has been used, one needs to clone this repository. The instructions below are for anonymous HTTP cloning.
 
-`cd`
-`mkdir -p git`
-`cd git`
-`git clone http://github.com/DevOps4Networks/iox-yocto-build.git`
+```bash
+cd
+mkdir -p git
+cd git
+git clone http://github.com/DevOps4Networks/iox-yocto-build.git
+```
 
 Then one needs to set up the build environment with these commands:
 
-`cd poky`
-`. ./oe-init-build-env ~/git/iox-yocto-build/`
+```bash
+cd poky
+. ./oe-init-build-env ~/git/iox-yocto-build/
+```
 
 One should expect to see the following, and have had the working directory changed to ~/git/iox-yocto-build/:
 
-`bash
+```bash
 ### Shell environment set up for builds. ###
 
 You can now run 'bitbake <target>'
@@ -62,7 +66,7 @@ Common targets are:
     meta-ide-support
 
 You can also run generated qemu images with a command like 'runqemu qemux86'
-`
+```
 
 Then one can:
 
@@ -70,7 +74,7 @@ Then one can:
 
 And expect to see something like:
 
-`bash
+```bash
 Loaded 1330 entries from dependency cache.
 NOTE: Resolving any missing task queue dependencies
 
@@ -89,6 +93,6 @@ meta-yocto
 meta-yocto-bsp    = "jethro:049be17b533d7c592dae8e0f33ddbae54639a776"
 
 NOTE: Preparing RunQueue
-`
+```
 
 The first build will need to populate various local caches, the 'downloads 'directory and the 'tmp' directory. That takes a long time the first time around.
