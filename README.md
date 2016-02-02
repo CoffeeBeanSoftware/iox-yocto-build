@@ -33,14 +33,17 @@ To execute a build, one should, either, use the terminal windows already availab
 
 The terminals windows on the build apliance are accessed via the down arrow symbol in the top left of the VM UI. One, anyway has to use those terminal windows at least once with the 'ifconfig' command to see the IP address of the VM on 'eth0'. Given that IP address, one can use a OSX terminal to connect to the Build Appliance like this:
 
-`sshpass -p "builder" ssh -o StrictHostKeyChecking=no builder@10.41.136.102`
+`sshpass -p "builder" ssh -o StrictHostKeyChecking=no builder@<Your Build Appliance Address>`
 
 If this is the first time that the Build Appliance has been used, one needs to clone this repository. The instructions below are for anonymous HTTP cloning.
 
 `bash
 cd
+
 mkdir -p git
+
 cd git
+
 git clone http://github.com/DevOps4Networks/iox-yocto-build.git
 `
 
@@ -48,6 +51,7 @@ Then one needs to set up the build environment with these commands:
 
 `bash
 cd poky
+
 . ./oe-init-build-env ~/git/iox-yocto-build/
 `
 
