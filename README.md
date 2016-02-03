@@ -9,7 +9,7 @@ This tutorial was developed and tested on OSX, using the software describd below
  - [XCode](https://developer.apple.com/xcode/), specifically for the command line utilities, including git, so that one can clone this repo, for example.
  - [VMWare Fusion](http://store.vmware.com/store/vmwde/en_IE/pd/productID.323416600) or [VirtualBox](https://www.virtualbox.org), suitable for running the [Yocto Build Appliance](https://www.yoctoproject.org/downloads/tools/jethro20/build-appliance-jethro-20). I used Fusion.
  - The [Yocto Build Appliance](https://www.yoctoproject.org/downloads/tools/jethro20/build-appliance-jethro-20), available from the [Yocto Tools page(]https://www.yoctoproject.org/downloads/tools). This is a matter of convenience, as one could also create one's own build appliance, but this is what I used.
- - The [sshpass](http://sourceforge.net/projects/sshpass/) utility, for convenience purposes only when VMs are being created and destroyed on a regular basis in development and test. WARNING, this is a hack around SSH, what one should do with Yocto images is described in the [Set Up SSH section of this post](https://maniacbug.wordpress.com/2012/08/03/yocto/).
+ - The [sshpass](http://sourceforge.net/projects/sshpass/) utility, for convenience purposes only when VMs are being created and destroyed on a regular basis in development and test. WARNING, this is a hack around SSH; what one should do with Yocto images is described in the [Set Up SSH section of this post](https://maniacbug.wordpress.com/2012/08/03/yocto/).
  - [Homebrew](http://brew.sh), so that one can install [Qemu](http://wiki.qemu.org/Main_Page) and other Linux like utilities on OSX.
 
 #Overall Workflow
@@ -27,13 +27,15 @@ The various parts of this are largely automated with scripts in this repository,
 
 The [Yocto Build Appliance](https://www.yoctoproject.org/downloads/tools/jethro20/build-appliance-jethro-20) runs under VMware Fusion, and probably under VirtualBox also. VMware Fusion is required when using the Build Appliance to also run/test the built image, as that utilises "nested virtualisation" which is only supported by VMware Fusion. If you just use the Build Appliance to build, which is what these instructions guide one to do, then you could *probably* get away with VirtualBox alone.
 
+The Build Appliance has a default disk size of ~40GB, which proved to be insufficient for these purposes. The disk space is consumed by the downloads, caches and tmp build files. For this tutorial, I increased the HDD size to 100GB. 
+
 The Build Appliance is designed to be used as a self-contained environment with a build wizard like utility called "Hob". That works just fine. What I explain below is the next stage, as it were, where one creates one's own customised build. That customised build is based on the files in the [conf](conf) directory in this project.
 
 To execute a build, one should, either, use the terminal windows already available when one runs the Build Appliance, or 'ssh' to the Build Appliance from the host.
 
-The terminals windows on the build apliance are accessed via the down arrow symbol in the top left of the VM UI. One, anyway has to use those terminal windows at least once with the 'ifconfig' command to see the IP address of the VM on 'eth0'. Given that IP address, one can use a OSX terminal to connect to the Build Appliance like this:
+The terminals windows on the Build Appliance are accessed via the down arrow symbol in the top left of the VM UI. One, anyway has to use those terminal windows at least once with the `ifconfig` command to see the IP address of the VM on 'eth0'. Given that IP address, one can use an OSX terminal to connect to the Build Appliance like this:
 
-`sshpass -p "builder" ssh -o StrictHostKeyChecking=no builder@<Your Build Appliance Address>`
+`sshpass -p "builder" ssh -o StrictHostKeyChecking=no builder@<Your Build Appliance IP Address>`
 
 If this is the first time that the Build Appliance has been used, one needs to clone this repository. The instructions below are for anonymous HTTP cloning.
 
@@ -51,7 +53,7 @@ cd ~/poky
 . ./oe-init-build-env ~/git/iox-yocto-build/
 ```
 
-One should expect to see the following, and have had the working directory changed to ~/git/iox-yocto-build/:
+One should expect to see something like the following, and have had the working directory changed to ~/git/iox-yocto-build/:
 
 ```bash
 ### Shell environment set up for builds. ###
@@ -95,4 +97,4 @@ meta-yocto-bsp    = "jethro:049be17b533d7c592dae8e0f33ddbae54639a776"
 NOTE: Preparing RunQueue
 ```
 
-The first build will need to populate various local caches, the 'downloads 'directory and the 'tmp' directory. That takes a long time the first time around.
+The first build will need to populate various local caches, the 'downloads 'directory and the 'tmp' directory. That takes a long time the first time around. See the note above about enlarging the disk to 100GB. It is very tedious to have a build run for hours, and then fail for lack of disk space.
