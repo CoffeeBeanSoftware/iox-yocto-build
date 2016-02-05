@@ -2,11 +2,11 @@
 
 It is a Linux VM within which one builds Yocto. That simple really.
 
-A pre-built  [Yocto Build Appliance](https://www.yoctoproject.org/downloads/tools/jethro20/build-appliance-jethro-20) is available from the [Yocto Tools page(]https://www.yoctoproject.org/downloads/tools). That is perfectly OK for many purposes, up to the ~40GB HDD that it is configured with. Since this tutorial requires more disk space, instructions for creating one's own build appliance are provided here.
+A pre-built  [Yocto Build Appliance](https://www.yoctoproject.org/downloads/tools/jethro20/build-appliance-jethro-20) is available from the [Yocto Tools page](https://www.yoctoproject.org/downloads/tools). That is perfectly OK for many purposes, up to the capacity of the ~40GB HDD that it is configured with. Since this tutorial requires more disk space, instructions for creating one's own build appliance are provided here.
 
 Note that it is technically possible to grow the size of a VM's disk, and to grow partitions within a Linux VM to use that expanded disk size. That is fiddly though, so creating a build appliance from scratch is a simpler path.
 
-One aspect of the [Yocto Build Appliance](https://www.yoctoproject.org/downloads/tools/jethro20/build-appliance-jethro-20) that is special is that it also provides a means to test the built images. Because of that, it is recommended to run it using VMware Fusion as VMware supports "nested virtualisation", i.e running a VM within a VM. If you just use the Build Appliance to build, which is what these instructions guide one to do, then you could *probably* get away with VirtualBox alone.
+One aspect of the [Yocto Build Appliance](https://www.yoctoproject.org/downloads/tools/jethro20/build-appliance-jethro-20) that is special is that it also provides a means to test the built images. Because of that, it is recommended to run it using [VMware Fusion](https://en.wikipedia.org/wiki/VMware_Fusion) as VMware supports "nested virtualisation", i.e running a VM within a VM. If you just use the Build Appliance to build, which is what these instructions guide one to do, then you could *probably* get away with [VirtualBox](https://www.virtualbox.org), which is free.
 
 #Creating a Build Appliance
 
@@ -22,7 +22,7 @@ sudo /etc/init.d/ssh start
 ifconfig eth0
 ```
 
-From that point I was able to use SSH to connect to the VM from my OSX terminal, which is a more convenient way to work. To make that even more convenient, I used `sshpass` like this:
+From that point I was able to use SSH to connect to the VM, at the IP address shown by the `ifconfig eth0` command, from my OSX terminal, which is a more convenient way to work. To make that even more convenient, I used `sshpass` like this:
 
 `sshpass -p "builder" ssh -o StrictHostKeyChecking=no builder@192.168.255.142`
 
