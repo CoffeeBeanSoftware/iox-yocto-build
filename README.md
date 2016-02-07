@@ -62,7 +62,7 @@ cd ~/poky
 . ./oe-init-build-env ~/git/iox-yocto-build/
 ```
 
-One should expect to see something like the following, and have had the working directory changed to ~/git/iox-yocto-build/:
+One should expect to see something like the following, and have had the working directory changed to `~/git/iox-yocto-build`:
 
 ```bash
 ### Shell environment set up for builds. ###
