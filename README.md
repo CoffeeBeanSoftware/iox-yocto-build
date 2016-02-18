@@ -40,9 +40,9 @@ The various parts of this are largely automated with scripts in this repository,
 
 You should have [created a build appliance](CreatingBuildAppliance.md) by this stage.
 
-To execute a build, one should, either, use the terminal windows already available when one runs the Build Appliance, or 'ssh' to the Build Appliance from the host.
+To execute a build, one should, either, use the terminal application that is part of the Ubuntu Desktop application suite, or 'ssh' to the Build Appliance from the host.
 
-The terminals windows on the Build Appliance are accessed via the down arrow symbol in the top left of the VM UI. One, anyway has to use those terminal windows at least once with the `ifconfig` command to see the IP address of the VM on 'eth0'. Given that IP address, one can use an OSX terminal to connect to the Build Appliance like this:
+One, anyway has to use a terminal window at least once with the `ifconfig` command to see the IP address of the VM on 'eth0'. Given that IP address, one can use an OSX terminal to connect to the Build Appliance like this:
 
 `sshpass -p "builder" ssh -o StrictHostKeyChecking=no builder@<Your Build Appliance IP Address>`
 
@@ -58,7 +58,7 @@ git clone http://github.com/DevOps4Networks/iox-yocto-build.git
 Then one needs to set up the build environment with these commands:
 
 ```bash
-cd ~/poky
+cd ~/git/poky
 . ./oe-init-build-env ~/git/iox-yocto-build/
 ```
 
@@ -106,4 +106,4 @@ meta-yocto-bsp    = "jethro:049be17b533d7c592dae8e0f33ddbae54639a776"
 NOTE: Preparing RunQueue
 ```
 
-The first build will need to populate various local caches, the 'downloads 'directory and the 'tmp' directory. That takes a long time the first time around. See the note above about enlarging the disk to 100GB. It is very tedious to have a build run for hours, and then fail for lack of disk space.
+The first build will need to populate various local caches, the `downloads` directory and the `tmp` directory. That takes a long time the first time around.
